@@ -3,7 +3,7 @@
     
     const players = Array.from({ length: 20 }, (_, index) => ({
 		jersey_number: index + 1,
-		name: 'Hendrik Peters',
+		name: 'Luuk Brauckmann',
 		goals: 1,
 		assists: 2,
 		blocks: 3,

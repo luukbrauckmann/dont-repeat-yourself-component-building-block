@@ -22,7 +22,7 @@
         <td>
           <span class="jersey-number">{player.jersey_number}</span>
         </td>
-        <td>{player.name}</td>
+        <td class="player-name">{player.name}</td>
         <td>
           <span class="statistic-goals">{player.goals}</span>
         </td>
@@ -70,13 +70,13 @@
   table tr {
 		flex: 1 1 0px;
 		display: flex;
-		flex-flow: row nowrap;
+		flex-flow: row wrap;
 		align-items: center;
 		border-bottom: 1px solid #d3d3d3;
 	}
 
   table.reversed tr {
-		flex-flow: row-reverse nowrap;
+		flex-flow: row-reverse wrap;
 	}
 
   table td {
@@ -91,9 +91,13 @@
 		text-align: right;
 	}
 
+  .player-name {
+    white-space: nowrap;
+  }
+
   .jersey-number,
   [class^="statistic-"] {
-    --size: 2.167em;
+    --size: 1em;
 
     display: inline-block;
     padding: 0.5em;
