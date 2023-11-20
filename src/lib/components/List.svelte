@@ -35,6 +35,11 @@
         <td>
           <span class="statistic-turnovers">{player.turnovers}</span>
         </td>
+        {#if true}
+          <td colspan="6">
+            Extra verhaal en statstieken.
+          </td>
+        {/if}
       </tr>
     {/each}
   </tbody>
@@ -149,4 +154,9 @@
     flex-flow: column nowrap;
     gap: 1em;
   }
+
+  td[colspan="6"] {
+    flex-basis: 100%;
+  }
+
 </style>
