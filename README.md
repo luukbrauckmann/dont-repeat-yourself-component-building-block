@@ -45,7 +45,7 @@ bun install
 bun run dev
 
 # Or when you want to open the browser directly with the correct URL.
-npm run dev --open
+bun run dev --open
 ```
 
 
