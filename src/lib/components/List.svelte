@@ -3,6 +3,10 @@
   export let reversed = false
 
   $: reversedClass = reversed ? 'reversed' : ''
+
+  let showPlayerInfo = (player) => {
+    console.log(player)
+  }
 </script>
 
 <table class="{reversedClass}">
@@ -18,7 +22,7 @@
   </thead>
   <tbody>
     {#each players as player}
-      <tr>
+      <tr on:click={showPlayerInfo(player)}>
         <td>
           <span class="jersey-number">{player.jersey_number}</span>
         </td>
@@ -46,6 +50,16 @@
 </table>
 
 <style>
+  table {
+    --border-radius: 1em;
+
+		width: 100%;
+		height: 100%;
+		border-collapse: collapse;
+		border-radius: var(--border-radius);
+		background: white;
+	}
+
   thead {
     clip: rect(0 0 0 0); 
     clip-path: inset(50%);
@@ -56,45 +70,59 @@
     width: 1px;
   }
 
-   table {
-		width: 100%;
-		height: 100%;
-		border-collapse: collapse;
-		border: 1px solid transparent;
-		border-radius: 1em;
-		background: white;
-	}
-
-  table tbody {
+  tbody {
 		display: flex;
 		flex-flow: column nowrap;
 		justify-content: space-between;
 		height: 100%;
 	}
 
-  table tr {
+  tr {
 		flex: 1 1 0px;
 		display: flex;
 		flex-flow: row wrap;
 		align-items: center;
-		border-bottom: 1px solid #d3d3d3;
+		border: 1px solid transparent;
+		border-bottom-color: #d3d3d3;
+    cursor: pointer;
+
+    transition: all 0.2s ease-in-out;
 	}
 
-  table.reversed tr {
+  .reversed tr {
 		flex-flow: row-reverse wrap;
 	}
 
-  table td {
+  tr:first-child {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+  }
+
+  tr:last-child {
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+  }
+
+  tr:hover {
+    background: #f4f5fa;
+    border-color: #d3d3d3;
+  }
+
+  td {
 		padding: 0.5em;
 	}
 
-	table td:nth-child(2) {
+	td:nth-child(2) {
 		flex: 1;
 	}
 
-	table.reversed td:nth-child(2) {
+	.reversed td:nth-child(2) {
 		text-align: right;
 	}
+
+  td[colspan="6"] {
+    flex-basis: 100%;
+  }
 
   .player-name {
     white-space: nowrap;
@@ -102,7 +130,7 @@
 
   .jersey-number,
   [class^="statistic-"] {
-    --size: 1em;
+    --size: 2.125em;
 
     display: inline-block;
     padding: 0.5em;
@@ -110,7 +138,7 @@
     height: var(--size);
     text-align: center;
     border: 1px solid black;
-    border-radius: calc(1em - 0.5em);
+    border-radius: calc(var(--border-radius) - 0.5em);
     line-height: 1;
     vertical-align: middle;
   }
@@ -153,10 +181,6 @@
     display: flex;
     flex-flow: column nowrap;
     gap: 1em;
-  }
-
-  td[colspan="6"] {
-    flex-basis: 100%;
   }
 
 </style>
