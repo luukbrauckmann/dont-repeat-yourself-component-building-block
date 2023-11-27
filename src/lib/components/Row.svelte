@@ -2,12 +2,15 @@
 	import { slide } from 'svelte/transition';
 
 	export let player;
+	export let reversed;
 
 	let open = false;
 	let toggle = () => (open = !open);
+
+	$: reversedClass = reversed ? 'reversed' : '';
 </script>
 
-<tr on:click={toggle}>
+<tr on:click={toggle} class={reversedClass}>
 	<td>
 		<span class="jersey-number">{player.jersey_number}</span>
 	</td>
@@ -41,9 +44,9 @@
 		border-bottom-color: #d3d3d3;
 	}
 
-	/* .reversed tr {
+	.reversed {
 		flex-flow: row-reverse wrap;
-	} */
+	}
 
 	tr:first-child {
 		border-top-right-radius: var(--border-radius);
@@ -72,9 +75,9 @@
 		flex: 1;
 	}
 
-	/* .reversed td:nth-child(2) {
+	.reversed td:nth-child(2) {
 		text-align: right;
-	} */
+	}
 
 	td[colspan='6'] {
 		flex-basis: 100%;

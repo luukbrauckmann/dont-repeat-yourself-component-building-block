@@ -3,11 +3,9 @@
 
 	export let players = [];
 	export let reversed = false;
-
-	$: reversedClass = reversed ? 'reversed' : '';
 </script>
 
-<table class={reversedClass}>
+<table>
 	<thead>
 		<tr>
 			<th>Number</th>
@@ -20,7 +18,7 @@
 	</thead>
 	<tbody>
 		{#each players as player}
-			<Row {player} />
+			<Row {player} {reversed} />
 		{/each}
 	</tbody>
 </table>
