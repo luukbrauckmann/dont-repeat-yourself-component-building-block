@@ -60,6 +60,10 @@
 		background: #f4f5fa;
 	}
 
+	tr:has(+ tr:hover) {
+		border-bottom-color: transparent;
+	}
+
 	td {
 		padding: 0.5em;
 	}
