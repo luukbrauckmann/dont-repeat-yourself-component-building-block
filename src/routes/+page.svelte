@@ -1,5 +1,5 @@
 <script>
-	import List from '$lib/components/List.svelte';
+	import PlayersList from '$lib/components/organisms/PLayersList.svelte';
 
 	const players = Array.from({ length: 20 }, (_, index) => ({
 		jersey_number: index + 1,
@@ -12,8 +12,8 @@
 </script>
 
 <main>
-	<List {players} />
-	<List {players} reversed={true} />
+	<PlayersList {players} />
+	<PlayersList {players} reversed={true} />
 </main>
 
 <style>

@@ -1,5 +1,5 @@
 <script>
-	import Row from './Row.svelte';
+	import PlayerRow from '../molecules/PlayerRow.svelte';
 
 	export let players = [];
 	export let reversed = false;
@@ -18,7 +18,7 @@
 	</thead>
 	<tbody>
 		{#each players as player}
-			<Row {player} {reversed} />
+			<PlayerRow {player} {reversed} />
 		{/each}
 	</tbody>
 </table>

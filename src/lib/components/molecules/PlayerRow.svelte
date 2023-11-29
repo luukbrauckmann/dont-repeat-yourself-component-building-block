@@ -1,5 +1,7 @@
 <script>
 	import { slide } from 'svelte/transition';
+	import JerseyNumber from '../atoms/JerseyNumber.svelte';
+	import Statistic from '../atoms/Statistic.svelte';
 
 	export let player;
 	export let reversed;
@@ -8,22 +10,22 @@
 	let toggle = () => (open = !open);
 </script>
 
-<tr on:click={toggle} class:reversed>
+<tr class:reversed on:click={toggle}>
 	<td>
-		<span class="jersey-number">{player.jersey_number}</span>
+		<JerseyNumber number={player.jersey_number} />
 	</td>
 	<td class="player-name">{player.name}</td>
 	<td>
-		<span class="statistic-goals">{player.goals}</span>
+		<Statistic number={player.goals} type={'goals'} />
 	</td>
 	<td>
-		<span class="statistic-assists">{player.assists}</span>
+		<Statistic number={player.assists} type={'assists'} />
 	</td>
 	<td>
-		<span class="statistic-blocks">{player.blocks}</span>
+		<Statistic number={player.blocks} type={'blocks'} />
 	</td>
 	<td>
-		<span class="statistic-turnovers">{player.turnovers}</span>
+		<Statistic number={player.turnovers} type={'turnovers'} />
 	</td>
 	{#if open}
 		<td transition:slide={{ duration: 200 }} colspan="6"> Extra verhaal en statstieken. </td>
@@ -83,48 +85,5 @@
 
 	.player-name {
 		white-space: nowrap;
-	}
-
-	.jersey-number,
-	[class^='statistic-'] {
-		--size: 2.125em;
-
-		display: inline-block;
-		vertical-align: middle;
-		border: 1px solid black;
-		border-radius: calc(var(--border-radius) - 0.5em);
-		padding: 0.5em;
-		width: var(--size);
-		height: var(--size);
-		line-height: 1;
-		text-align: center;
-	}
-
-	[class^='statistic-'] {
-		--color: white;
-		border-color: var(--color);
-		background: var(--color);
-
-		color: white;
-	}
-
-	.statistic-goals {
-		--color: #18d02b;
-	}
-
-	.statistic-assists {
-		--color: #2974e4;
-	}
-
-	.statistic-blocks {
-		--color: #ed4444;
-	}
-
-	.statistic-turnovers {
-		--color: #ffc738;
-	}
-
-	[class^='statistic-']:empty {
-		--color: #f4f5fa;
 	}
 </style>
