@@ -1,5 +1,5 @@
 <script>
-	import PlayersList from '$lib/components/organisms/PLayersList.svelte';
+	import PlayersList from '$lib/components/organisms/PlayersList.svelte';
 
 	const players = Array.from({ length: 20 }, (_, index) => ({
 		jersey_number: index + 1,
