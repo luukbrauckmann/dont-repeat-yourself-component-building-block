@@ -6,11 +6,9 @@
 
 	let open = false;
 	let toggle = () => (open = !open);
-
-	$: reversedClass = reversed ? 'reversed' : '';
 </script>
 
-<tr on:click={toggle} class={reversedClass}>
+<tr on:click={toggle} class:reversed>
 	<td>
 		<span class="jersey-number">{player.jersey_number}</span>
 	</td>
