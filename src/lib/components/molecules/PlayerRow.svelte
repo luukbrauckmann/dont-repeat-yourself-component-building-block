@@ -1,7 +1,7 @@
 <script>
 	import { slide } from 'svelte/transition';
-	import JerseyNumber from '../atoms/JerseyNumber.svelte';
-	import Statistic from '../atoms/Statistic.svelte';
+	import JerseyNumber from '$lib/components/atoms/JerseyNumber.svelte';
+	import Statistic from '$lib/components/atoms/Statistic.svelte';
 
 	export let player;
 	export let reversed;
@@ -71,10 +71,6 @@
 		padding: 0.5em;
 	}
 
-	td:nth-child(2) {
-		flex: 1;
-	}
-
 	.reversed td:nth-child(2) {
 		text-align: right;
 	}
@@ -84,6 +80,7 @@
 	}
 
 	.player-name {
+		flex: 1;
 		white-space: nowrap;
 	}
 </style>

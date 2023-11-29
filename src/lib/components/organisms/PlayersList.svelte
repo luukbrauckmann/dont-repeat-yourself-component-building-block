@@ -1,5 +1,5 @@
 <script>
-	import PlayerRow from '../molecules/PlayerRow.svelte';
+	import PlayerRow from '$lib/components/molecules/PlayerRow.svelte';
 
 	export let players = [];
 	export let reversed = false;
